@@ -1,0 +1,133 @@
+.wrapper {
+  display: flex;
+  padding: 40px;
+  border-radius: 8px;
+  background-color: #fffafa;
+  height: 450px;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+input[type='text'],
+input[type='number'] {
+  height: 20px;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid lightgray;
+  background-color: white;
+  outline: none;
+}
+
+input[type='text']:hover,
+input[type='number']:hover {
+  box-shadow: 0 0 5pt 0.5pt #d3d3d3;
+}
+input[type='text']:focus,
+input[type='number']:focus {
+  box-shadow: 0 0 5pt 2pt #d3d3d3;
+  outline-width: 0px;
+}
+
+.label {
+  font-weight: 600;
+}
+
+img {
+  width: 300px;
+}
+
+.nextBtn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 18px;
+  background-color: yellow;
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.container > h1 {
+  color: white;
+  font-size: 36px;
+}
+
+.controls {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.controls button {
+  font-size: 18px;
+  background-color: yellow;
+  border: none;
+  width: 150px;
+  height: 48px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: 150ms ease-in-out;
+  font-weight: bold;
+}
+
+.controls button:hover {
+  background-color: #6f05a2;
+  color: goldenrod;
+}
+
+.radio {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+input[type='radio'] {
+  margin-right: 12px;
+}
+
+@media screen and (max-width: 700px) {
+  .wrapper {
+    flex-direction: column;
+    padding: 24px;
+    height: fit-content;
+    gap: 40px;
+  }
+
+  .container {
+    gap: 20px;
+  }
+
+  .container > h1 {
+    font-size: 32px;
+  }
+
+  .form {
+    gap: 10px;
+  }
+
+  img {
+    width: 260px;
+  }
+
+  .controls button {
+    font-size: 16px;
+    width: 100px;
+    height: 36px;
+  }
+}
