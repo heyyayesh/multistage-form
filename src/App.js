@@ -6,7 +6,7 @@ import StageThree from './components/StageThree';
 import StageSelector from './components/StageSelector';
 
 function App() {
-  const [selectedStage, setSelectedStage] = useState(2);
+  const [selectedStage, setSelectedStage] = useState(3);
 
   return (
     <div className='App'>

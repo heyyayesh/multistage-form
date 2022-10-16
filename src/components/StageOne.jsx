@@ -7,7 +7,7 @@ function StageOne() {
     firstName: '',
     lastName: '',
     email: '',
-    age: null,
+    age: '',
     gender: '',
   });
 
@@ -66,37 +66,41 @@ function StageOne() {
             />
           </label>
 
-          <label className={styles.label}>Gender :</label>
-          <label htmlFor='male'>
-            <input
-              type='radio'
-              name='gender'
-              id='male'
-              value='male'
-              onChange={handleChange}
-            />
-            Male
-          </label>
-          <label htmlFor='female'>
-            <input
-              type='radio'
-              name='gender'
-              id='female'
-              value='female'
-              onChange={handleChange}
-            />
-            Female
-          </label>
-          <label htmlFor='other'>
-            <input
-              type='radio'
-              name='gender'
-              id='other'
-              value='other'
-              onChange={handleChange}
-            />
-            Other
-          </label>
+          <div className={styles.radioContainer}>
+            <label className={styles.label}>Gender :</label>
+            <div>
+              <label htmlFor='male'>
+                <input
+                  type='radio'
+                  name='gender'
+                  id='male'
+                  value='male'
+                  onChange={handleChange}
+                />
+                Male
+              </label>
+              <label htmlFor='female'>
+                <input
+                  type='radio'
+                  name='gender'
+                  id='female'
+                  value='female'
+                  onChange={handleChange}
+                />
+                Female
+              </label>
+              <label htmlFor='other'>
+                <input
+                  type='radio'
+                  name='gender'
+                  id='other'
+                  value='other'
+                  onChange={handleChange}
+                />
+                Other
+              </label>
+            </div>
+          </div>
         </form>
       </div>
 
