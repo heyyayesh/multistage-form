@@ -6,6 +6,7 @@ function StageOne() {
   const [personalInfo, setPersonalInfo] = useState({
     firstName: '',
     lastName: '',
+    email: '',
     age: null,
     gender: '',
   });
@@ -41,6 +42,16 @@ function StageOne() {
               placeholder='Lastname'
               name='lastName'
               value={personalInfo.lastName}
+              onChange={handleChange}
+            />
+          </label>
+
+          <label>
+            <input
+              type='email'
+              placeholder='Email'
+              name='email'
+              value={personalInfo.email}
               onChange={handleChange}
             />
           </label>

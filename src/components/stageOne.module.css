@@ -16,7 +16,8 @@
 }
 
 input[type='text'],
-input[type='number'] {
+input[type='number'],
+input[type='email'] {
   height: 20px;
   font-size: 18px;
   padding: 10px;
@@ -27,10 +28,12 @@ input[type='number'] {
 }
 
 input[type='text']:hover,
+input[type='email']:hover,
 input[type='number']:hover {
   box-shadow: 0 0 5pt 0.5pt #d3d3d3;
 }
 input[type='text']:focus,
+input[type='email']:focus,
 input[type='number']:focus {
   box-shadow: 0 0 5pt 2pt #d3d3d3;
   outline-width: 0px;
@@ -38,6 +41,10 @@ input[type='number']:focus {
 
 .label {
   font-weight: 600;
+}
+
+label {
+  cursor: pointer;
 }
 
 img {
@@ -71,7 +78,7 @@ img {
 .controls {
   display: flex;
   width: 100%;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .controls button {
