@@ -6,7 +6,7 @@ This is a multistage form created using React along with Redux.
 
 ## View Deployment
 
-[click here]()
+[click here](https://vocal-kitsune-f17f16.netlify.app/)
 
 ## Instructions to build locally
 
