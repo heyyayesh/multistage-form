@@ -12,6 +12,10 @@
   color: gray;
 }
 
+.controls {
+  justify-content: space-between;
+}
+
 .file input {
   display: none;
 }

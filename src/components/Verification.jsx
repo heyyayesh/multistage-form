@@ -12,7 +12,6 @@ const OTP = '1234';
 
 function StageOne() {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user.value);
 
   const [otp, setOtp] = useState('');
 
@@ -22,7 +21,7 @@ function StageOne() {
 
   function validate() {
     if (otp !== OTP) {
-      setErrorMsg("OTP Doesn't Match!");
+      setErrorMsg("OTP Doesn't Match! (Current Placeholder OTP: 1234)");
       return false;
     }
 
@@ -44,6 +43,7 @@ function StageOne() {
 
   function handleClick() {
     setPopupVisible(false);
+    setOtp('');
   }
 
   return (
@@ -64,13 +64,15 @@ function StageOne() {
               onChange={handleChange}
             />
           </label>
-          <button className={styles4.resend}>Resend</button>
+          <button type='button' className={styles4.resend}>
+            Resend
+          </button>
         </form>
 
         {!!errorMsg.length && <div className={styles.error}>{errorMsg}</div>}
       </div>
 
-      <div className={styles.controls}>
+      <div className={`${styles.controls} ${styles4.controls}`}>
         <button onClick={() => dispatch(previous())}>Previous</button>
         <button onClick={handleNext}>Submit</button>
       </div>

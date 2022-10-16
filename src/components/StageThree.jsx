@@ -124,7 +124,7 @@ function StageOne() {
         {!!errorMsg.length && <div className={styles.error}>{errorMsg}</div>}
       </div>
 
-      <div className={styles.controls}>
+      <div className={`${styles.controls} ${styles3.controls}`}>
         <button onClick={() => dispatch(previous())}>Previous</button>
         <button onClick={handleNext}>Submit</button>
       </div>

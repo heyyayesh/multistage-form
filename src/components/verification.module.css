@@ -9,6 +9,10 @@
   cursor: pointer;
 }
 
+.controls {
+  justify-content: space-between;
+}
+
 .otp {
   text-align: center;
 }
