@@ -9,6 +9,8 @@ function StageSelector({ stage }) {
       <div className={stage === 2 ? styles.selected : ''}>2</div>
       <span></span>
       <div className={stage === 3 ? styles.selected : ''}>3</div>
+      <span></span>
+      <div className={stage === 4 ? styles.selected : ''}>4</div>
     </div>
   );
 }

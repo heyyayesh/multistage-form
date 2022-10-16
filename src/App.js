@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className='App'>
-      {stage <= 3 && <StageSelector stage={stage} />}
+      <StageSelector stage={stage} />
       {stage === 1 ? (
         <StageOne />
       ) : stage === 2 ? (
