@@ -24,8 +24,23 @@ function StageOne() {
   const [errorMsg, setErrorMsg] = useState('');
 
   function validate() {
+    const passwordRegex =
+      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+
     if (!profile.username || !profile.password) {
       setErrorMsg('Username and Password Required!');
+      return false;
+    }
+
+    if (profile.password.length < 8) {
+      setErrorMsg('Passwords must be at least of 8 characters!!');
+      return false;
+    }
+
+    if (!passwordRegex.test(profile.password)) {
+      setErrorMsg(
+        'Password must have at least a number and a special character!'
+      );
       return false;
     }
 

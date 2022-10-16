@@ -1,0 +1,14 @@
+.resend {
+  height: 32px;
+  padding: 4px;
+  font-size: 16px;
+  background-color: yellow;
+  border: 1px solid gray;
+  border-radius: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.otp {
+  text-align: center;
+}

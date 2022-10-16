@@ -8,7 +8,7 @@ export const stageSlice = createSlice({
 
   reducers: {
     next: state => {
-      if (state.value < 3) state.value += 1;
+      if (state.value < 4) state.value += 1;
     },
 
     previous: state => {

@@ -15,6 +15,7 @@ const initialValues = {
   password: '',
   confirmPassword: '',
   picture: '',
+  verified: false,
 };
 
 export const userSlice = createSlice({
@@ -30,9 +31,13 @@ export const userSlice = createSlice({
     reset: state => {
       state.value = initialValues;
     },
+
+    verify: state => {
+      state.value = { ...state.value, verified: true };
+    },
   },
 });
 
-export const { add, reset } = userSlice.actions;
+export const { add, reset, verify } = userSlice.actions;
 
 export default userSlice.reducer;
