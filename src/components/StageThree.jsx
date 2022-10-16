@@ -4,18 +4,22 @@ import img from '../assets/stage1.svg';
 import styles3 from './stageThree.module.css';
 import upload from '../assets/upload-icon.svg';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { next, previous } from '../features/stageSlice';
+import { add } from '../features/userSlice';
 
 function StageOne() {
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user.value);
 
-  const [profile, setProfile] = useState({
-    username: '',
-    password: '',
-    confirmPassword: '',
-    picture: '',
-  });
+  const [profile, setProfile] = useState(
+    user || {
+      username: '',
+      password: '',
+      confirmPassword: '',
+      picture: '',
+    }
+  );
 
   function handleChange(e) {
     setProfile({
@@ -24,7 +28,12 @@ function StageOne() {
     });
   }
 
-  console.log(profile);
+  function handleNext() {
+    dispatch(add(profile));
+    dispatch(next());
+  }
+
+  // console.log(profile);
 
   return (
     <div className={styles.container}>
@@ -83,7 +92,7 @@ function StageOne() {
 
       <div className={styles.controls}>
         <button onClick={() => dispatch(previous())}>Previous</button>
-        {/* <button onClick={() => dispatch(next())}>Next</button> */}
+        <button onClick={handleNext}>Submit</button>
       </div>
     </div>
   );

@@ -8,7 +8,10 @@ import { useSelector } from 'react-redux';
 
 function App() {
   const stage = useSelector(state => state.stage.value);
+  const user = useSelector(state => state.user.value);
+
   console.log(stage);
+  console.log(user);
 
   return (
     <div className='App'>

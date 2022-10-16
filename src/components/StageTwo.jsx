@@ -3,18 +3,22 @@ import styles from './stageOne.module.css';
 import img from '../assets/stage1.svg';
 import styles2 from './stageTwo.module.css';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { next, previous } from '../features/stageSlice';
+import { add } from '../features/userSlice';
 
 function StageOne() {
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user.value);
 
-  const [address, setAdress] = useState({
-    state: '',
-    city: '',
-    pincode: null,
-    address: '',
-  });
+  const [address, setAdress] = useState(
+    user || {
+      state: '',
+      city: '',
+      pincode: '',
+      address: '',
+    }
+  );
 
   function handleChange(e) {
     setAdress({
@@ -23,7 +27,12 @@ function StageOne() {
     });
   }
 
-  console.log(address);
+  function handleNext() {
+    dispatch(add(address));
+    dispatch(next());
+  }
+
+  // console.log(address);
 
   return (
     <div className={styles.container}>
@@ -61,6 +70,7 @@ function StageOne() {
             <textarea
               name='address'
               placeholder='Address'
+              value={address.address}
               onChange={handleChange}
             ></textarea>
           </label>
@@ -79,7 +89,7 @@ function StageOne() {
 
       <div className={styles.controls}>
         <button onClick={() => dispatch(previous())}>Previous</button>
-        <button onClick={() => dispatch(next())}>Next</button>
+        <button onClick={handleNext}>Next</button>
       </div>
     </div>
   );

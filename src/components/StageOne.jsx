@@ -2,28 +2,36 @@ import React, { useState } from 'react';
 import styles from './stageOne.module.css';
 import img from '../assets/stage1.svg';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { next } from '../features/stageSlice';
+import { add } from '../features/userSlice';
 
 function StageOne() {
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user.value);
 
-  const [personalInfo, setPersonalInfo] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    age: '',
-    gender: '',
-  });
+  const [personalInfo, setPersonalInfo] = useState(
+    user || {
+      firstName: '',
+      lastName: '',
+      email: '',
+      age: '',
+      gender: '',
+    }
+  );
 
   function handleChange(e) {
+    console.log(e.target.name, e.target.value);
     setPersonalInfo({
       ...personalInfo,
       [e.target.name]: e.target.value,
     });
   }
 
-  console.log(personalInfo);
+  function handleNext() {
+    dispatch(add(personalInfo));
+    dispatch(next());
+  }
 
   return (
     <div className={styles.container}>
@@ -80,6 +88,7 @@ function StageOne() {
                   name='gender'
                   id='male'
                   value='male'
+                  checked={personalInfo.gender === 'male'}
                   onChange={handleChange}
                 />
                 Male
@@ -90,6 +99,7 @@ function StageOne() {
                   name='gender'
                   id='female'
                   value='female'
+                  checked={personalInfo.gender === 'female'}
                   onChange={handleChange}
                 />
                 Female
@@ -100,6 +110,7 @@ function StageOne() {
                   name='gender'
                   id='other'
                   value='other'
+                  checked={personalInfo.gender === 'other'}
                   onChange={handleChange}
                 />
                 Other
@@ -110,7 +121,7 @@ function StageOne() {
       </div>
 
       <div className={styles.controls}>
-        <button onClick={() => dispatch(next())}>Next</button>
+        <button onClick={handleNext}>Next</button>
       </div>
     </div>
   );
