@@ -4,7 +4,12 @@ import img from '../assets/stage1.svg';
 import styles3 from './stageThree.module.css';
 import upload from '../assets/upload-icon.svg';
 
+import { useDispatch } from 'react-redux';
+import { next, previous } from '../features/stageSlice';
+
 function StageOne() {
+  const dispatch = useDispatch();
+
   const [profile, setProfile] = useState({
     username: '',
     password: '',
@@ -77,8 +82,8 @@ function StageOne() {
       </div>
 
       <div className={styles.controls}>
-        <button>Previous</button>
-        <button>Next</button>
+        <button onClick={() => dispatch(previous())}>Previous</button>
+        {/* <button onClick={() => dispatch(next())}>Next</button> */}
       </div>
     </div>
   );

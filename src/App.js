@@ -1,23 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import StageOne from './components/StageOne';
 import StageTwo from './components/StageTwo';
 import StageThree from './components/StageThree';
 import StageSelector from './components/StageSelector';
+import { useSelector } from 'react-redux';
 
 function App() {
-  const [selectedStage, setSelectedStage] = useState(3);
+  const stage = useSelector(state => state.stage.value);
+  console.log(stage);
 
   return (
     <div className='App'>
-      <StageSelector stage={selectedStage} />
-      {selectedStage === 1 ? (
-        <StageOne />
-      ) : selectedStage === 2 ? (
-        <StageTwo />
-      ) : (
-        <StageThree />
-      )}
+      <StageSelector stage={stage} />
+      {stage === 1 ? <StageOne /> : stage === 2 ? <StageTwo /> : <StageThree />}
     </div>
   );
 }

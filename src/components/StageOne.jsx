@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import styles from './stageOne.module.css';
 import img from '../assets/stage1.svg';
 
+import { useDispatch } from 'react-redux';
+import { next } from '../features/stageSlice';
+
 function StageOne() {
+  const dispatch = useDispatch();
+
   const [personalInfo, setPersonalInfo] = useState({
     firstName: '',
     lastName: '',
@@ -105,7 +110,7 @@ function StageOne() {
       </div>
 
       <div className={styles.controls}>
-        <button>Next</button>
+        <button onClick={() => dispatch(next())}>Next</button>
       </div>
     </div>
   );

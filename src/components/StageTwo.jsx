@@ -3,7 +3,12 @@ import styles from './stageOne.module.css';
 import img from '../assets/stage1.svg';
 import styles2 from './stageTwo.module.css';
 
+import { useDispatch } from 'react-redux';
+import { next, previous } from '../features/stageSlice';
+
 function StageOne() {
+  const dispatch = useDispatch();
+
   const [address, setAdress] = useState({
     state: '',
     city: '',
@@ -73,8 +78,8 @@ function StageOne() {
       </div>
 
       <div className={styles.controls}>
-        <button>Previous</button>
-        <button>Next</button>
+        <button onClick={() => dispatch(previous())}>Previous</button>
+        <button onClick={() => dispatch(next())}>Next</button>
       </div>
     </div>
   );
