@@ -3,7 +3,8 @@ import styles from './stageOne.module.css';
 import img from '../assets/stage1.svg';
 import styles3 from './stageThree.module.css';
 import upload from '../assets/upload-icon.svg';
-
+import prevIcon from '../assets/previous.svg';
+import nextIcon from '../assets/next.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { next, previous } from '../features/stageSlice';
 import { add } from '../features/userSlice';
@@ -125,8 +126,12 @@ function StageOne() {
       </div>
 
       <div className={`${styles.controls} ${styles3.controls}`}>
-        <button onClick={() => dispatch(previous())}>Previous</button>
-        <button onClick={handleNext}>Submit</button>
+        <button onClick={() => dispatch(previous())}>
+          <img src={prevIcon} alt='.' />
+        </button>
+        <button onClick={handleNext}>
+          <img src={nextIcon} alt='.' />
+        </button>
       </div>
     </div>
   );

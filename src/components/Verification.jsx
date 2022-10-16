@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import styles from './stageOne.module.css';
 import img from '../assets/stage1.svg';
 import styles4 from './verification.module.css';
-
-import { useDispatch, useSelector } from 'react-redux';
+import prevIcon from '../assets/previous.svg';
+import nextIcon from '../assets/next.svg';
+import { useDispatch } from 'react-redux';
 import { previous } from '../features/stageSlice';
 import { verify } from '../features/userSlice';
 import Popup from './Popup';
@@ -73,8 +74,12 @@ function StageOne() {
       </div>
 
       <div className={`${styles.controls} ${styles4.controls}`}>
-        <button onClick={() => dispatch(previous())}>Previous</button>
-        <button onClick={handleNext}>Submit</button>
+        <button onClick={() => dispatch(previous())}>
+          <img src={prevIcon} alt='.' />
+        </button>
+        <button onClick={handleNext}>
+          <img src={nextIcon} alt='.' />
+        </button>
       </div>
 
       {popupVisible && <Popup ok={handleClick} />}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './stageOne.module.css';
 import img from '../assets/stage1.svg';
-
+import nextIcon from '../assets/next.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { next } from '../features/stageSlice';
 import { add } from '../features/userSlice';
@@ -168,7 +168,9 @@ function StageOne() {
       </div>
 
       <div className={styles.controls}>
-        <button onClick={handleNext}>Next</button>
+        <button onClick={handleNext}>
+          <img src={nextIcon} alt='.' />
+        </button>
       </div>
     </div>
   );
