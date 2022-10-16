@@ -21,19 +21,36 @@ function StageOne() {
     }
   );
 
+  const [errorMsg, setErrorMsg] = useState('');
+
+  function validate() {
+    if (!profile.username || !profile.password) {
+      setErrorMsg('Username and Password Required!');
+      return false;
+    }
+
+    if (profile.password !== profile.confirmPassword) {
+      setErrorMsg('Passwords must match!');
+      return false;
+    }
+
+    setErrorMsg('');
+    return true;
+  }
+
   function handleChange(e) {
     setProfile({
       ...profile,
-      [e.target.name]: e.target.value || e.target.files[0],
+      [e.target.name]: e.target.value,
     });
   }
 
   function handleNext() {
+    if (!validate()) return;
+
     dispatch(add(profile));
     dispatch(next());
   }
-
-  // console.log(profile);
 
   return (
     <div className={styles.container}>
@@ -88,6 +105,8 @@ function StageOne() {
             />
           </label>
         </form>
+
+        {!!errorMsg.length && <div className={styles.error}>{errorMsg}</div>}
       </div>
 
       <div className={styles.controls}>

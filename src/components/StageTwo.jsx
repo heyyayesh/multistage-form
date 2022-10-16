@@ -20,6 +20,18 @@ function StageOne() {
     }
   );
 
+  const [errorMsg, setErrorMsg] = useState('');
+
+  function validate() {
+    if (!address.state || !address.city || !address.pincode) {
+      setErrorMsg('State, City and Pincode Required!');
+      return false;
+    }
+
+    setErrorMsg('');
+    return true;
+  }
+
   function handleChange(e) {
     setAdress({
       ...address,
@@ -28,11 +40,11 @@ function StageOne() {
   }
 
   function handleNext() {
+    if (!validate()) return;
+
     dispatch(add(address));
     dispatch(next());
   }
-
-  // console.log(address);
 
   return (
     <div className={styles.container}>
@@ -85,6 +97,8 @@ function StageOne() {
             />
           </label>
         </form>
+
+        {!!errorMsg.length && <div className={styles.error}>{errorMsg}</div>}
       </div>
 
       <div className={styles.controls}>

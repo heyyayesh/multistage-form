@@ -20,8 +20,31 @@ function StageOne() {
     }
   );
 
+  const [errorMsg, setErrorMsg] = useState('');
+
+  function validate() {
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (
+      !personalInfo.firstName ||
+      !personalInfo.lastName ||
+      !personalInfo.email ||
+      !personalInfo.gender ||
+      !personalInfo.age
+    ) {
+      setErrorMsg('All fields are required!');
+      return false;
+    }
+
+    if (!emailRegex.test(personalInfo.email)) {
+      setErrorMsg('Invalid email!');
+      return false;
+    }
+
+    setErrorMsg('');
+    return true;
+  }
+
   function handleChange(e) {
-    console.log(e.target.name, e.target.value);
     setPersonalInfo({
       ...personalInfo,
       [e.target.name]: e.target.value,
@@ -29,6 +52,8 @@ function StageOne() {
   }
 
   function handleNext() {
+    if (!validate()) return;
+
     dispatch(add(personalInfo));
     dispatch(next());
   }
@@ -74,6 +99,8 @@ function StageOne() {
               type='number'
               placeholder='Age'
               name='age'
+              min='1'
+              max='120'
               value={personalInfo.age}
               onChange={handleChange}
             />
@@ -118,6 +145,8 @@ function StageOne() {
             </div>
           </div>
         </form>
+
+        {!!errorMsg.length && <div className={styles.error}>{errorMsg}</div>}
       </div>
 
       <div className={styles.controls}>
