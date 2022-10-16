@@ -5,6 +5,7 @@ const initialValues = {
   lastName: '',
   email: '',
   age: '',
+  phone: '',
   gender: '',
   state: '',
   city: '',

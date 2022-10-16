@@ -15,6 +15,7 @@ function StageOne() {
       firstName: '',
       lastName: '',
       email: '',
+      phone: '',
       age: '',
       gender: '',
     }
@@ -24,10 +25,12 @@ function StageOne() {
 
   function validate() {
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const phoneRegex = /^[789]\d{9}$/;
     if (
       !personalInfo.firstName ||
       !personalInfo.lastName ||
       !personalInfo.email ||
+      !personalInfo.phone ||
       !personalInfo.gender ||
       !personalInfo.age
     ) {
@@ -37,6 +40,11 @@ function StageOne() {
 
     if (!emailRegex.test(personalInfo.email)) {
       setErrorMsg('Invalid email!');
+      return false;
+    }
+
+    if (!phoneRegex.test(personalInfo.phone)) {
+      setErrorMsg('Invalid Phone Number!');
       return false;
     }
 
@@ -90,6 +98,16 @@ function StageOne() {
               placeholder='Email'
               name='email'
               value={personalInfo.email}
+              onChange={handleChange}
+            />
+          </label>
+
+          <label>
+            <input
+              type='phone'
+              placeholder='Phone'
+              name='phone'
+              value={personalInfo.phone}
               onChange={handleChange}
             />
           </label>
